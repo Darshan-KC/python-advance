@@ -14,11 +14,25 @@
 # 1     5     10    10     5    1
 
 
-def pascal_triangle():
-    for i in range(1,7):
-        print(" "*(6 - i),end="")
-        print(i)
-        
-print("This is started")
-pascal_triangle()
-print("This is running")
+def generate_pascals_triangle(n):
+    triangle = []
+
+    for i in range(n):
+        row = [1] * (i + 1)
+        for j in range(1, i):
+            row[j] = triangle[i - 1][j - 1] + triangle[i - 1][j]
+        triangle.append(row)
+
+    return triangle
+
+def print_pascals_triangle(triangle):
+    for row in triangle:
+        print(" " * (len(triangle) - len(row)), end="")
+        for num in row:
+            print(f"{num} ", end="")
+        print()
+
+# Generate and print the first 5 rows of Pascal's Triangle
+rows = 5
+triangle = generate_pascals_triangle(rows)
+print_pascals_triangle(triangle)
