@@ -16,3 +16,9 @@
 # _1    6   15  20   15   6   1
 
 # Write a recursive program to calculate the Fibonacci numbers, using Pascal's triangle.
+
+def pascal_triangle(row, col):
+    if col == 0 or col == row:
+        return 1
+    else:
+        return pascal_triangle(row - 1, col - 1) + pascal_triangle(row - 1, col)
