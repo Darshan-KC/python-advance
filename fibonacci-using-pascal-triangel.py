@@ -17,8 +17,21 @@
 
 # Write a recursive program to calculate the Fibonacci numbers, using Pascal's triangle.
 
-def pascal_triangle(row, col):
+def pascal_triangle(row, col, memo):
     if col == 0 or col == row:
         return 1
-    else:
-        return pascal_triangle(row - 1, col - 1) + pascal_triangle(row - 1, col)
+    if (row, col) in memo:
+        return memo[(row, col)]
+    memo[(row, col)] = pascal_triangle(row - 1, col - 1, memo) + pascal_triangle(row - 1, col, memo)
+    return memo[(row, col)]
+
+def fibonacci_from_pascal(n):
+    fib_sum = 0
+    memo = {}
+    for i in range(n + 1):
+        fib_sum += pascal_triangle(i, n - i, memo)
+    return fib_sum
+
+# # Test the function
+# n = 7
+# print(f"The {n}th Fibonacci number using Pascal's triangle is: {fibonacci_from_pascal(n)}")
