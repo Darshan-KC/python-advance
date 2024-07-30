@@ -32,6 +32,9 @@ def fibonacci_from_pascal(n):
         fib_sum += pascal_triangle(i, n - i, memo)
     return fib_sum
 
-# # Test the function
-# n = 7
-# print(f"The {n}th Fibonacci number using Pascal's triangle is: {fibonacci_from_pascal(n)}")
+
+if __name__ == "__main__":    
+    # # Test the function
+    # n = 7
+    # print(f"The {n}th Fibonacci number using Pascal's triangle is: {fibonacci_from_pascal(n)}")
+    pass
